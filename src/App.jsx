@@ -1,11 +1,15 @@
-import './App.css'
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./sections/Hero/Hero";
+import "./App.css";
 
 function App() {
   return (
     <>
-      <h1>Hotel Confort Ariari</h1>
+      <Navbar />
+      <Hero />
+      {/* Acá vamos a ir agregando el resto de las secciones a medida que las migremos */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

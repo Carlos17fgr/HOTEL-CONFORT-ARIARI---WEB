@@ -1,0 +1,134 @@
+.reserva-reveal {
+  --reserva-verde: #46502a;
+  --reserva-verde-oscuro: #30371d;
+  --reserva-dorado: #c7a85f;
+  --reserva-tinta: #292820;
+  position: relative; height: 190vh; min-height: 980px; background: #efede7; color: #fff;
+}
+.reserva-reveal-sticky {
+  position: sticky; top: 0; width: 100%; height: 100svh; min-height: 680px;
+  overflow: hidden; isolation: isolate; background: #34342d;
+}
+.reserva-fondo, .reserva-velo { position: absolute; inset: 0; }
+.reserva-fondo { z-index: -3; overflow: hidden; }
+.reserva-fondo img {
+  width: 100%; height: 100%; display: block; object-fit: cover;
+  object-position: center 52%; transform: scale(1.12); will-change: transform, filter;
+}
+.reserva-velo {
+  z-index: -2;
+  background: linear-gradient(180deg, rgba(19,20,16,.62) 0, rgba(19,20,16,.18) 38%, rgba(19,20,16,.42) 100%),
+              linear-gradient(90deg, rgba(13,14,11,.36) 0, rgba(13,14,11,.04) 48%, rgba(13,14,11,.25) 100%);
+}
+.reserva-contenido {
+  position: absolute; inset: 0; z-index: 2; width: min(1500px, calc(100% - clamp(36px, 6vw, 118px)));
+  height: 100%; margin: auto; display: flex; flex-direction: column; justify-content: flex-end;
+  padding-bottom: clamp(72px, 10vh, 118px);
+}
+.reserva-encabezado { max-width: 760px; margin-bottom: clamp(28px, 4.6vh, 52px); will-change: transform, opacity, filter; }
+.reserva-eyebrow {
+  display: inline-flex; align-items: center; gap: 11px; margin-bottom: 18px;
+  font-family: Manrope, Arial, sans-serif; font-size: clamp(.62rem, .72vw, .74rem);
+  font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.74);
+}
+.reserva-eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--reserva-dorado); }
+.reserva-encabezado h2 {
+  margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(3.65rem, 6.5vw, 7.6rem);
+  font-weight: 500; line-height: .84; letter-spacing: -.045em; text-wrap: balance;
+}
+.reserva-encabezado p {
+  max-width: 610px; margin: clamp(18px, 2.5vh, 26px) 0 0; font-family: Manrope, Arial, sans-serif;
+  font-size: clamp(.78rem, .92vw, .96rem); line-height: 1.7; color: rgba(255,255,255,.75);
+}
+
+.reserva-bar {
+  position: relative; width: 100%; min-height: 116px; margin: 0 !important; padding: 11px !important;
+  display: grid !important; grid-template-columns: 1fr 1fr 1.18fr minmax(235px, 0.86fr);
+  align-items: stretch !important; gap: 0 !important; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.72); border-radius: 16px; background: rgba(255,255,255,.965);
+  box-shadow: 0 30px 80px rgba(8,10,7,.24); color: var(--reserva-tinta);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  transform-origin: center bottom; will-change: transform, opacity, clip-path;
+}
+.reserva-campo {
+  position: relative; min-width: 0; padding: 22px clamp(19px, 2.1vw, 34px); display: flex;
+  flex-direction: column; justify-content: center; gap: 9px; opacity: 0; transform: translateY(28px);
+  will-change: transform, opacity;
+}
+.reserva-campo::after { content: ""; position: absolute; top: 19%; right: 0; width: 1px; height: 62%; background: rgba(41,40,32,.13); }
+.reserva-label {
+  font-family: Manrope, Arial, sans-serif; font-size: .61rem; font-weight: 650;
+  letter-spacing: .16em; text-transform: uppercase; color: rgba(41,40,32,.56);
+}
+.reserva-control { position: relative; min-width: 0; display: flex; align-items: center; gap: 12px; }
+.reserva-bar input, .reserva-bar select {
+  width: 100%; min-width: 0; height: 31px; padding: 0 36px 0 0 !important; border: 0 !important;
+  border-radius: 0 !important; outline: 0; background: none; color: var(--reserva-tinta);
+  font-family: Manrope, Arial, sans-serif; font-size: clamp(.78rem, .9vw, .94rem); font-weight: 500;
+  line-height: 1; appearance: none; -webkit-appearance: none;
+}
+.reserva-bar input:focus-visible, .reserva-bar select:focus-visible { box-shadow: 0 1px 0 var(--reserva-dorado); }
+.reserva-bar input[type=date]::-webkit-calendar-picker-indicator {
+  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+}
+.reserva-chevron, .reserva-icono {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: var(--reserva-dorado); pointer-events: none;
+}
+.reserva-icono { width: 20px; height: 20px; }
+.reserva-icono svg { width: 100%; height: 100%; display: block; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.reserva-chevron { right: 2px; font-family: Georgia, serif; font-size: 1.2rem; }
+
+.reserva-submit {
+  width: 100%; min-height: 94px; margin: 0 !important; padding: 0 clamp(22px, 2vw, 31px) !important;
+  display: flex !important; align-items: center; justify-content: space-between; gap: 18px;
+  border: 0 !important; border-radius: 10px !important; background: var(--reserva-verde) !important;
+  color: #fff !important; font-family: Manrope, Arial, sans-serif; font-size: clamp(.68rem, .75vw, .78rem) !important;
+  font-weight: 650; letter-spacing: .085em; text-align: left; text-transform: uppercase; cursor: pointer;
+  opacity: 0; transform: translateY(28px);
+  transition: background-color .35s ease, transform .45s cubic-bezier(.2,.7,0,1), box-shadow .35s ease !important;
+  will-change: transform, opacity;
+}
+.reserva-submit:focus-visible, .reserva-submit:hover { background: var(--reserva-verde-oscuro) !important; box-shadow: 0 13px 28px rgba(48,55,29,.23); }
+.reserva-submit-flecha { font-size: 1rem; transition: transform .35s ease; }
+.reserva-submit:hover .reserva-submit-flecha { transform: translate(3px, -3px); }
+
+.reserva-nota {
+  margin: 17px 3px 0; font-family: Manrope, Arial, sans-serif; font-size: .61rem; font-weight: 500;
+  letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.62);
+  opacity: 0; transform: translateY(15px); will-change: transform, opacity;
+}
+.reserva-scroll-indicador {
+  position: absolute; right: clamp(22px, 3.5vw, 68px); bottom: clamp(21px, 3vh, 38px); z-index: 3;
+  display: flex; align-items: center; gap: 12px; font-family: Manrope, Arial, sans-serif;
+  font-size: .58rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55);
+}
+.reserva-scroll-indicador i { position: relative; width: 48px; height: 1px; overflow: hidden; background: rgba(255,255,255,.24); }
+.reserva-scroll-indicador i::after {
+  content: ""; position: absolute; inset: 0; background: #fff; transform: translateX(-100%);
+  animation: reservaIndicador 2.4s ease-in-out infinite;
+}
+@keyframes reservaIndicador { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+
+@media (max-width: 1120px) {
+  .reserva-bar { grid-template-columns: repeat(3, 1fr); }
+  .reserva-submit { grid-column: 1 / -1; min-height: 64px; }
+  .reserva-reveal { height: 210vh; }
+}
+
+@media (max-width: 780px) {
+  .reserva-reveal { height: auto; min-height: 0; padding: 0; }
+  .reserva-reveal-sticky { position: relative; height: auto; min-height: 850px; padding: 125px 0 66px; }
+  .reserva-contenido { position: relative; inset: auto; width: calc(100% - 32px); height: auto; justify-content: flex-start; padding: 0; }
+  .reserva-encabezado { margin-bottom: 34px; opacity: 1 !important; filter: none !important; transform: none !important; }
+  .reserva-encabezado h2 { font-size: clamp(3.4rem, 15vw, 5.3rem); }
+  .reserva-bar { min-height: 0; padding: 9px !important; grid-template-columns: 1fr; border-radius: 14px; opacity: 1 !important; clip-path: none !important; transform: none !important; }
+  .reserva-campo { padding: 18px 17px; opacity: 1 !important; transform: none !important; }
+  .reserva-campo::after { top: auto; left: 17px; right: 17px; bottom: 0; width: auto; height: 1px; }
+  .reserva-submit { grid-column: auto; min-height: 62px; opacity: 1 !important; transform: none !important; }
+  .reserva-nota { text-align: center; opacity: 1 !important; transform: none !important; }
+  .reserva-scroll-indicador { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reserva-scroll-indicador i::after { animation: none; transform: none; }
+}

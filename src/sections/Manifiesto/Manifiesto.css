@@ -1,0 +1,71 @@
+.hotel-manifesto {
+  --manifest-progress: 0;
+  position: relative; min-height: 235svh; background: #172019; isolation: isolate;
+}
+.hotel-manifesto__sticky {
+  position: sticky; top: 0; height: 100svh; min-height: 680px; overflow: hidden;
+  display: grid; place-items: center; background: #172019;
+}
+.hotel-manifesto__media, .hotel-manifesto__overlay, .hotel-manifesto__grain { position: absolute; inset: 0; }
+.hotel-manifesto__media { z-index: 0; overflow: hidden; }
+.hotel-manifesto__media img {
+  width: 100%; height: 112%; display: block; object-fit: cover; object-position: center;
+  transform: translate3d(0, 4%, 0) scale(1.1); filter: saturate(.82) contrast(1.02) brightness(.82);
+  will-change: transform, filter; backface-visibility: hidden;
+}
+.hotel-manifesto__overlay {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(10,15,12,.78) 0%, rgba(10,15,12,.58) 48%, rgba(10,15,12,.42) 100%),
+              linear-gradient(180deg, rgba(8,12,9,.16) 0%, rgba(8,12,9,.45) 100%);
+  pointer-events: none;
+}
+.hotel-manifesto__grain {
+  z-index: 2; opacity: .1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+.hotel-manifesto__content { position: relative; z-index: 3; width: min(72%, 980px); margin: auto; color: #fff; }
+.hotel-manifesto__eyebrow {
+  margin: 0 0 clamp(24px, 4vh, 42px); font-family: "Manrope", sans-serif;
+  font-size: clamp(.68rem, .78vw, .82rem); font-weight: 600; letter-spacing: .24em;
+  text-transform: uppercase; color: rgba(255,255,255,.92); display: flex; align-items: center; gap: 16px;
+}
+.hotel-manifesto__eyebrow::before { content: ""; width: clamp(38px, 5vw, 72px); height: 1px; background: #d7bd78; }
+.hotel-manifesto h2 {
+  margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.2rem, 3.2vw, 4.1rem);
+  font-weight: 500; line-height: 1.28; letter-spacing: -.025em; text-wrap: balance;
+}
+.hotel-manifesto__letter {
+  color: #fff;
+  opacity: calc(.16 + .84 * clamp(0, (var(--manifest-progress) - var(--letter-start)) * 18, 1));
+  transition: opacity .08s linear;
+}
+.hotel-manifesto__hint {
+  position: absolute; z-index: 3; right: clamp(24px, 4vw, 72px); bottom: clamp(28px, 5vh, 56px);
+  display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,.72);
+  font: 600 .62rem/1 "Manrope", sans-serif; letter-spacing: .2em; text-transform: uppercase;
+  opacity: clamp(0, calc((var(--manifest-progress) - .72) * 5), 1);
+}
+.hotel-manifesto__hint i { width: 58px; height: 1px; background: rgba(255,255,255,.28); position: relative; overflow: hidden; }
+.hotel-manifesto__hint i::after {
+  content: ""; position: absolute; inset: 0; background: #fff; transform: translateX(-100%);
+  animation: manifestLine 2.8s cubic-bezier(.65,0,.35,1) infinite;
+}
+@keyframes manifestLine { 0% { transform: translateX(-105%); } 50%, 60% { transform: translateX(0); } 100% { transform: translateX(105%); } }
+
+@media (max-width: 760px) {
+  .hotel-manifesto { min-height: 210svh; }
+  .hotel-manifesto__sticky { min-height: 620px; }
+  .hotel-manifesto__content { width: auto; margin: 0; padding: 0 24px; }
+  .hotel-manifesto__media img { object-position: 58% center; }
+  .hotel-manifesto h2 { font-size: clamp(2rem, 8vw, 3.4rem); line-height: 1.22; }
+  .hotel-manifesto__hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotel-manifesto { min-height: 100svh; }
+  .hotel-manifesto__sticky { position: relative; }
+  .hotel-manifesto__letter { opacity: 1 !important; transition: none; }
+  .hotel-manifesto__media img { transform: none !important; }
+  .hotel-manifesto__hint i::after { animation: none; transform: none; }
+}
