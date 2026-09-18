@@ -1,71 +1,56 @@
-import { useState, useEffect, useRef } from "react";
-import "./Hero.css";
+import { useState, useEffect } from 'react';
+import './Hero.css';
 
-const WORDS = ["excepcional", "inolvidable", "sofisticada", "exclusiva", "perfecta"];
+const words = ["excepcional", "auténtica", "inolvidable", "exclusiva"];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-  const [leaving, setLeaving] = useState(false);
-  const wordRef = useRef(null);
-  const [width, setWidth] = useState(null);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState('fade-in');
 
   useEffect(() => {
-    if (wordRef.current) {
-      setWidth(Math.ceil(wordRef.current.getBoundingClientRect().width + 10));
-    }
-  }, [index]);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
     const interval = setInterval(() => {
-      setLeaving(true);
+      setAnimationClass('fade-out');
       setTimeout(() => {
-        setIndex((prev) => (prev + 1) % WORDS.length);
-        setLeaving(false);
-      }, 700);
-    }, 3200);
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        setAnimationClass('fade-in');
+      }, 400); // Tiempo de la animación de salida
+    }, 3500); // Cambia cada 3.5 segundos
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="inicio hero-premium" id="inicio">
-      <video className="video hero-video" autoPlay loop muted playsInline preload="metadata" poster="/images/lugares/exterior.jpg">
-        <source src="/videos/hero/luxury-hotel-reel.mp4" type="video/mp4" />
-        Tu navegador no soporta video HTML5.
+    <section className="hero-editorial" id="inicio">
+      {/* Video de fondo */}
+      <video className="hero-video" autoPlay loop muted playsInline>
+        <source src="/videos/hero/hero-video.mp4" type="video/mp4" />
       </video>
 
-      <div className="hero-shade" aria-hidden="true" />
-      <div className="hero-vignette" aria-hidden="true" />
+      {/* Capa oscura para legibilidad */}
+      <div className="hero-bg-overlay"></div>
 
-      <p className="hero-side-note hero-side-note-left"><span></span>Hospitalidad llanera</p>
-      <p className="hero-side-note hero-side-note-right"><span></span>Granada · Meta</p>
+      <div className="hero-container">
+        {/* Metadatos superiores (Hospitalidad Llanera / Granada - Meta) */}
+        <div className="hero-top-meta">
+          
+          <span>◇ HOSPITALIDAD LLANERA</span>
+          <span>◇ GRANADA - META</span>
+        </div>
 
-      <div className="contenido-inicio hero-content">
-        <p className="hero-kicker">Hotel Confort Ariari · Tu descanso en el corazón del Meta</p>
-
-        <div className="texto-inicio hero-copy">
-          <h1 className="titulo-carrusel" aria-label={`Estadía ${WORDS[index]}`}>
-            <span className="palabra-fija">Estadía</span>
-            <span className="palabra-rotativa" style={width ? { width } : undefined}>
-              <span
-                ref={wordRef}
-                className={`palabra-actual ${leaving ? "salir" : "is-visible"}`}
-              >
-                {WORDS[index]}
-              </span>
-            </span>
+        {/* Bloque inferior agrupado */}
+        <div className="hero-content-bottom">
+          <p className="hero-pretitle">HOTEL CONFORT ARIARI · TU DESCANSO EN EL CORAZÓN DEL META</p>
+          
+          <h1 className="hero-title">
+            Estadía <span className={`title-italic-gold ${animationClass}`}>{words[currentWordIndex]}</span>
           </h1>
 
-          <div className="linea-inicio" />
-
-          <div className="fila-inferior-inicio">
-            <p className="subtitulo">Descanso, atención cercana y experiencias para descubrir el Ariari.</p>
-            <a className="hero-scroll-link" href="/reserva">
-              <span>Reserva tu estadía</span>
-              <span className="hero-scroll-icon" aria-hidden="true">↓</span>
+          <div className="hero-bottom-bar">
+            <p className="hero-description">
+              Descanso, atención cercana y experiencias para descubrir el Ariari.
+            </p>
+            <a href="#reserva" className="hero-action-link">
+              RESERVA TU ESTADÍA <span className="action-circle">↓</span>
             </a>
           </div>
         </div>

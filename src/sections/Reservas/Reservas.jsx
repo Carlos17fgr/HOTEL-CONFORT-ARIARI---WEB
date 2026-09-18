@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import "./Reserva.css";
+import "./Reservas.css";
 
 export default function Reserva() {
   const sectionRef = useRef(null);

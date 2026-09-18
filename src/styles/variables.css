@@ -1,7 +1,29 @@
 :root {
-  --hca-gold: #d7b66f;
-  --hca-gold-soft: #f0d9a2;
-  --hca-ink: #10100f;
-  --hca-cream: #f7f2e8;
-  --hca-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Paleta de Colores - Hotel Confort Ariari */
+  --color-primary: #0D131A;
+  --color-surface: #141C24;
+  --color-surface-elevated: #1E293B;
+  --color-accent: #C5A059;
+  --color-accent-hover: #D4AF37;
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-border: rgba(197, 160, 89, 0.2);
+  --color-overlay: rgba(13, 19, 26, 0.75);
+
+  /* Tipografía y Escala */
+  --font-heading: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Transiciones y Tiempos */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Elevación y Z-Index */
+  --z-navbar: 1000;
+  --z-modal: 1100;
+  --z-toast: 1200;
+
+  /* Estado de Variables Dinámicas */
+  --manifest-progress: 0;
 }
