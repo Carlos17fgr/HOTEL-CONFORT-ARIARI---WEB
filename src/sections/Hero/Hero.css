@@ -36,7 +36,7 @@
   width: 100%;
   max-width: 1650px;
   margin: 0 auto;
-  padding: 2rem 4rem 3rem 4rem;
+  padding: 2rem 1rem 2rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,11 +49,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
-  opacity: 0.85;
+  font-size: 0.8rem;
+  letter-spacing: 0.30em;
+  opacity: 0.82;
   text-transform: uppercase;
-  margin-top: 5.2rem; 
+  margin-top: 24rem; 
 }
 
 /* Bloque principal inferior alineado con el estilo editorial */
@@ -161,7 +161,6 @@
   
   .hero-top-meta {
     margin-top: 4rem;
-    
   }
 
   .hero-title {

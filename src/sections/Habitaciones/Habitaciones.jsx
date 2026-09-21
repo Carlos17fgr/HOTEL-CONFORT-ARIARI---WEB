@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from 'react';
 import './Habitaciones.css';
 
@@ -85,11 +84,3 @@ export default function Habitaciones() {
     </section>
   );
 }
-=======
-import  Havitaciones from ":/react"
-import "Habitaciones.css"
-
-
-
-const   
->>>>>>> e190868398341c67c23c0616c675653cdc01ccf1

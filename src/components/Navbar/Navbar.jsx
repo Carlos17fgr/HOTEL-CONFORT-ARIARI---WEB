@@ -46,11 +46,14 @@ export default function Navbar() {
       <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}>
         <nav className="menu-nav">
           <ul className="menu-list">
-            <li><a href="#inicio" onClick={closeMenu}><span className="menu-num">01</span> INICIO</a></li>
-            <li><a href="#nosotros" onClick={closeMenu}><span className="menu-num">02</span> NOSOTROS</a></li>
-            <li><a href="#habitaciones" onClick={closeMenu}><span className="menu-num">03</span> HABITACIONES</a></li>
-            <li><a href="#servicios" onClick={closeMenu}><span className="menu-num">04</span> SERVICIOS</a></li>
-            <li><a href="#reserva" onClick={closeMenu}><span className="menu-num">05</span> RESERVAS</a></li>
+           <li><a href="#inicio" onClick={closeMenu}><span className="menu-num">01</span> INICIO</a></li>
+          <li><a href="#conocenos" onClick={closeMenu}><span className="menu-num">02</span> CONOCENOS</a></li>
+          <li><a href="#habitaciones" onClick={closeMenu}><span className="menu-num">03</span> HABITACIONES</a></li>
+          <li><a href="#reservas" onClick={closeMenu}><span className="menu-num">04</span> RESERVAS</a></li>
+          <li><a href="#servicios" onClick={closeMenu}><span className="menu-num">05</span> SERVICIOS</a></li>
+          <li><a href="#bicicletas" onClick={closeMenu}><span className="menu-num">06</span> BICICLETAS</a></li>
+          <li><a href="#contacto" onClick={closeMenu}><span className="menu-num">07</span> CONTACTO</a></li>
+          <li><a href="#acceso" onClick={closeMenu}><span className="menu-num">08</span> ACCESO</a></li>
           </ul>
 
           <div className="menu-footer">
