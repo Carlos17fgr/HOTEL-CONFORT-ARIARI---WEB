@@ -1,0 +1,162 @@
+.habitaciones-section {
+  padding: 8rem 2rem;
+  background-color: var(--color-surface, #141C24);
+  border-top: 1px solid var(--color-border, rgba(197, 160, 89, 0.2));
+}
+
+.habitaciones-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.habitaciones-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: var(--color-accent, #C5A059);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.habitaciones-title {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-text-main, #F8FAFC);
+}
+
+.habitaciones-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2.5rem;
+}
+
+.habitaciones-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.habitacion-card-btn {
+  background: var(--color-primary, #0D131A);
+  border: 1px solid var(--color-border, rgba(197, 160, 89, 0.2));
+  padding: 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.habitacion-card-btn.is-active,
+.habitacion-card-btn:hover {
+  border-color: var(--color-accent, #C5A059);
+  background: var(--color-surface-elevated, #1E293B);
+  transform: translateX(6px);
+}
+
+.room-category {
+  font-size: 0.75rem;
+  color: var(--color-accent, #C5A059);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+}
+
+.room-name {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: 1.2rem;
+  margin: 0.3rem 0;
+  color: var(--color-text-main, #F8FAFC);
+}
+
+.room-price {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #94A3B8);
+}
+
+.habitaciones-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background-color: var(--color-primary, #0D131A);
+  border: 1px solid var(--color-border, rgba(197, 160, 89, 0.2));
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.display-media {
+  min-height: 380px;
+}
+
+.display-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.display-info {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.display-badge {
+  font-size: 0.8rem;
+  color: var(--color-accent, #C5A059);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.display-title {
+  font-family: var(--font-heading, Georgia, serif);
+  font-size: 1.8rem;
+  color: var(--color-text-main, #F8FAFC);
+  margin-bottom: 1rem;
+}
+
+.display-desc {
+  color: var(--color-text-muted, #94A3B8);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.display-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  color: var(--color-text-main, #F8FAFC);
+}
+
+.btn-reserva-room {
+  display: inline-block;
+  text-align: center;
+  padding: 0.9rem 1.5rem;
+  background-color: var(--color-accent, #C5A059);
+  color: var(--color-primary, #0D131A);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-reserva-room:hover {
+  background-color: var(--color-accent-hover, #D4AF37);
+}
+
+@media (max-width: 1024px) {
+  .habitaciones-container {
+    grid-template-columns: 1fr;
+  }
+  .habitaciones-display {
+    grid-template-columns: 1fr;
+  }
+}
