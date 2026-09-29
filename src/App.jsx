@@ -9,4 +9,8 @@ export default function App() {
       <Hero />
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}+
+>>>>>>> 492bdaf2ec6d113cf313212919bbf66aac608ed9
