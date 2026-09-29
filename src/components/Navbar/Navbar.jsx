@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -27,18 +28,18 @@ export default function Navbar() {
           </button>
 
           {/* Logo Centrado con tu imagen */}
-          <a href="#" className="logo-container" onClick={closeMenu}>
+          <Link to="/" className="logo-container" onClick={closeMenu}>
             <img 
               src="/images/logo/logo-hca-premium.png" 
               alt="Hotel Confort Ariari" 
               className="logo-img" 
             />
-          </a>
+          </Link>
 
           {/* Botón Reservar Derecha */}
-          <a href="#reserva" className="btn-reservar-top" onClick={closeMenu}>
+          <Link to="/reservas" className="btn-reservar-top" onClick={closeMenu}>
             RESERVAR <span className="arrow">↗</span>
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -46,14 +47,14 @@ export default function Navbar() {
       <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}>
         <nav className="menu-nav">
           <ul className="menu-list">
-           <li><a href="#inicio" onClick={closeMenu}><span className="menu-num">01</span> INICIO</a></li>
-          <li><a href="#conocenos" onClick={closeMenu}><span className="menu-num">02</span> CONOCENOS</a></li>
-          <li><a href="#habitaciones" onClick={closeMenu}><span className="menu-num">03</span> HABITACIONES</a></li>
-          <li><a href="#reservas" onClick={closeMenu}><span className="menu-num">04</span> RESERVAS</a></li>
-          <li><a href="#servicios" onClick={closeMenu}><span className="menu-num">05</span> SERVICIOS</a></li>
-          <li><a href="#bicicletas" onClick={closeMenu}><span className="menu-num">06</span> BICICLETAS</a></li>
-          <li><a href="#contacto" onClick={closeMenu}><span className="menu-num">07</span> CONTACTO</a></li>
-          <li><a href="#acceso" onClick={closeMenu}><span className="menu-num">08</span> ACCESO</a></li>
+            <li><Link to="/" onClick={closeMenu}><span className="menu-num">01</span> INICIO</Link></li>
+            <li><Link to="/conocenos" onClick={closeMenu}><span className="menu-num">02</span> CONOCENOS</Link></li>
+            <li><Link to="/habitaciones" onClick={closeMenu}><span className="menu-num">03</span> HABITACIONES</Link></li>
+            <li><Link to="/reservas" onClick={closeMenu}><span className="menu-num">04</span> RESERVAS</Link></li>
+            <li><Link to="/servicios" onClick={closeMenu}><span className="menu-num">05</span> SERVICIOS</Link></li>
+            <li><Link to="/bicicletas" onClick={closeMenu}><span className="menu-num">06</span> BICICLETAS</Link></li>
+            <li><Link to="/contacto" onClick={closeMenu}><span className="menu-num">07</span> CONTACTO</Link></li>
+            <li><Link to="/acceso" onClick={closeMenu}><span className="menu-num">08</span> ACCESO</Link></li>
           </ul>
 
           <div className="menu-footer">
