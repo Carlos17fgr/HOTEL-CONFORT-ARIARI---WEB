@@ -1,43 +1,75 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function RoomsHero() {
+  const heroRef = useRef(null);
   const videoRef = useRef(null);
   const copyRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!videoRef.current || !copyRef.current) return;
-      const scrollY = window.scrollY;
-      
-      // Efecto suave de zoom y opacidad en el scroll
-      const scale = 1.08 + Math.min(scrollY * 0.0003, 0.1);
-      const opacity = Math.max(1 - scrollY * 0.002, 0);
+    const video = videoRef.current;
+    const hero = heroRef.current;
+    if (!video || !hero) return;
 
-      videoRef.current.style.transform = `scale(${scale})`;
-      copyRef.current.style.opacity = opacity;
+    // 1. Pausa automática si el video no está visible en pantalla (de tu Seccion_Cuartos_2.js)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.04 }
+    );
+    observer.observe(hero);
+
+    // 2. Parallax y escala con Scroll
+    const handleScroll = () => {
+      const rect = hero.getBoundingClientRect();
+      const distance = Math.max(hero.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
+
+      const scale = 1.08 + progress * 0.075;
+      const brightness = 0.76 - progress * 0.12;
+      const copyOpacity = Math.max(1 - progress * 1.5, 0);
+      const copyY = progress * -68;
+
+      if (video) {
+        video.style.transform = `scale(${scale.toFixed(4)})`;
+        video.style.filter = `saturate(.78) contrast(1.02) brightness(${brightness.toFixed(3)})`;
+      }
+      if (copyRef.current) {
+        copyRef.current.style.opacity = copyOpacity.toFixed(4);
+        copyRef.current.style.transform = `translate3d(0, ${copyY.toFixed(3)}px, 0)`;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Limpieza esencial en React
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Limpieza de eventos
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <section className="rooms-hero" aria-labelledby="roomsHeroTitle">
+    <section className="rooms-hero" ref={heroRef} id="habitacionesInicio" aria-labelledby="roomsHeroTitle">
       <div className="rooms-hero__sticky">
-        <video 
-          ref={videoRef} 
-          className="rooms-hero__video" 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
+        <video
+          ref={videoRef}
+          className="rooms-hero__video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
           poster="/IMG/1_RESERVAS.png"
         >
-          <source src="/VIDEOS/Luxury Hotel Video Reel 2023.mp4" type="video/mp4" />
+          <source src="/videos/hero/hero-video.mp4" type="video/mp4" />
         </video>
-
         <div className="rooms-hero__shade" aria-hidden="true"></div>
         <div className="rooms-hero__grain" aria-hidden="true"></div>
 
@@ -49,7 +81,7 @@ export default function RoomsHero() {
             <a href="#detallesHabitaciones" className="rooms-button rooms-button--light">
               Conocer habitaciones <span>↓</span>
             </a>
-            <a href="reserva.html" className="rooms-link">
+            <a href="/reservas" className="rooms-link">
               Consultar disponibilidad <span>↗</span>
             </a>
           </div>
