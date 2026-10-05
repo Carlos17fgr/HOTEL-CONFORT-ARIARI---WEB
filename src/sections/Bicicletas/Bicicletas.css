@@ -1,0 +1,861 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Manrope:wght@300;400;500;600&display=swap');
+
+:root {
+    --ink: #20231f;
+    --ink-soft: #5e635b;
+    --forest: #45532d;
+    --forest-dark: #27301f;
+    --gold: #c3a75f;
+    --cream: #f7f4ed;
+    --white: #fff;
+    --header-height: 92px;
+    --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    overflow-x: hidden;
+    color: var(--ink);
+    background: var(--cream);
+    font-family: "Manrope", Arial, sans-serif;
+}
+
+body.is-locked {
+    overflow: hidden;
+}
+
+button, a, input, select {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.bike-hero {
+    position: relative;
+    min-height: 900px;
+    height: max(100svh, 900px);
+    padding: calc(var(--header-height) + clamp(42px, 6vh, 80px)) clamp(24px, 7vw, 118px) 0;
+    overflow: hidden;
+    isolation: isolate;
+    background: #f2efe7;
+}
+
+.bike-hero__background,
+.bike-hero__wash,
+.bike-hero__grain {
+    position: absolute;
+    inset: 0;
+}
+
+.bike-hero__background {
+    z-index: -3;
+}
+
+.bike-hero__background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 52%;
+    transform: scale(1.075);
+    filter: saturate(.82) contrast(.94) brightness(1.03);
+    will-change: transform;
+}
+
+.bike-hero__wash {
+    z-index: -2;
+    background:
+        linear-gradient(90deg, rgba(249,247,241,.99) 0%, rgba(249,247,241,.96) 27%, rgba(249,247,241,.70) 46%, rgba(249,247,241,.13) 74%),
+        linear-gradient(180deg, rgba(246,243,236,.12), rgba(34,39,29,.08));
+}
+
+.bike-hero__grain {
+    z-index: -1;
+    opacity: .13;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+}
+
+.bike-hero__content {
+    width: min(100%, 1540px);
+    min-height: calc(100% - 150px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(370px, .86fr) minmax(520px, 1.28fr);
+    align-items: center;
+    gap: clamp(30px, 5vw, 90px);
+}
+
+.bike-hero__copy {
+    position: relative;
+    z-index: 2;
+    max-width: 590px;
+    padding-bottom: 80px;
+}
+
+.section-eyebrow {
+    margin: 0 0 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--forest);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .23em;
+    text-transform: uppercase;
+}
+
+.section-eyebrow span {
+    display: inline-block;
+    width: 46px;
+    height: 1px;
+    background: currentColor;
+    opacity: .75;
+}
+
+.section-eyebrow--center {
+    justify-content: center;
+}
+
+.section-eyebrow--light {
+    color: rgba(248,245,237,.84);
+}
+
+.bike-hero h1,
+.bike-selection h2,
+.bike-route h2,
+.modal h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+}
+
+.bike-hero h1 {
+    margin: 0;
+    font-size: clamp(5rem, 7.6vw, 9.4rem);
+    line-height: .76;
+    letter-spacing: -.06em;
+}
+
+.bike-hero h1 em {
+    color: #667043;
+    font-weight: 500;
+}
+
+.bike-hero__description {
+    max-width: 550px;
+    margin: clamp(30px, 4.5vh, 48px) 0 0;
+    color: rgba(32,35,31,.75);
+    font-size: clamp(.93rem, 1.02vw, 1.08rem);
+    line-height: 1.78;
+}
+
+.bike-features {
+    margin-top: clamp(34px, 4vh, 50px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+    gap: 18px;
+}
+
+.bike-feature {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink-soft);
+    font-size: .73rem;
+    line-height: 1.35;
+}
+
+.bike-feature strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.bike-feature__icon,
+.bike-booking-icon {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(69,83,45,.42);
+    color: var(--forest);
+    border-radius: 50%;
+}
+
+.bike-feature__icon {
+    width: 43px;
+    height: 43px;
+}
+
+/* AQUÍ SE LE DA TAMAÑO Y FORMA AL ÍCONO DE LA BICI */
+.bike-feature svg,
+.bike-booking-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    max-width: 22px !important;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.45;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.bike-hero__visual {
+    position: relative;
+    z-index: 1;
+    min-height: 620px;
+    display: grid;
+    place-items: center;
+}
+
+.bike-hero__halo {
+    position: absolute;
+    width: min(48vw, 690px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(249,247,241,.36);
+    border: 1px solid rgba(255,255,255,.42);
+    backdrop-filter: blur(3px);
+    box-shadow: inset 0 0 0 22px rgba(255,255,255,.07);
+}
+
+.bike-hero__halo::before,
+.bike-hero__halo::after {
+    content: "";
+    position: absolute;
+    inset: 9%;
+    border: 1px solid rgba(255,255,255,.26);
+    border-radius: inherit;
+}
+
+.bike-hero__halo::after {
+    inset: 20%;
+}
+
+.bike-hero__bike {
+    position: relative;
+    width: min(47vw, 760px);
+    min-width: 560px;
+    object-fit: contain;
+    transform: translate3d(0, 2%, 0) rotate(-1.2deg);
+    filter: drop-shadow(0 34px 28px rgba(15,19,13,.26));
+    animation: bikeFloat 7s ease-in-out infinite;
+    will-change: transform;
+}
+
+.bike-hero__label {
+    position: absolute;
+    right: 2%;
+    bottom: 13%;
+    padding: 11px 16px;
+    color: rgba(255,255,255,.9);
+    background: rgba(28,34,23,.72);
+    border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(10px);
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+@keyframes bikeFloat {
+    0%, 100% { transform: translate3d(0, 2%, 0) rotate(-1.2deg); }
+    50% { transform: translate3d(0, -1.2%, 0) rotate(.25deg); }
+}
+
+.bike-booking-bar {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    bottom: clamp(26px, 4.5vh, 52px);
+    transform: translateX(-50%);
+    width: min(calc(100% - 48px), 1510px);
+    min-height: 98px;
+    padding: 13px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) minmax(230px, .9fr);
+    align-items: stretch;
+    color: var(--ink);
+    background: rgba(255,255,255,.94);
+    border: 1px solid rgba(46,51,42,.09);
+    box-shadow: 0 24px 64px rgba(26,31,24,.14);
+    backdrop-filter: blur(18px);
+}
+
+.bike-booking-item {
+    min-width: 0;
+    padding: 12px clamp(16px, 2.2vw, 34px);
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    border-right: 1px solid rgba(32,35,31,.12);
+}
+
+.bike-booking-icon {
+    width: 43px;
+    height: 43px;
+    border-color: rgba(195,167,95,.7);
+    color: #a98c43;
+}
+
+.bike-booking-item small {
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(32,35,31,.56);
+    font-size: .66rem;
+    letter-spacing: .05em;
+}
+
+.bike-booking-item strong {
+    display: block;
+    color: var(--ink);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1rem, 1.2vw, 1.28rem);
+    font-weight: 600;
+}
+
+.primary-button,
+.secondary-button,
+.outline-button {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), background-color .5s var(--ease);
+}
+
+.primary-button {
+    padding: 0 clamp(22px, 2vw, 34px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    color: #fff;
+    background: var(--forest);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.primary-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--forest-dark);
+    transform: translateY(102%);
+    transition: transform .58s var(--ease);
+}
+
+.primary-button span {
+    position: relative;
+    z-index: 1;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+    transform: translateY(-2px);
+}
+
+.primary-button:hover::before,
+.primary-button:focus-visible::before {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   SELECCIÓN DE BICICLETAS
+   ========================================================= */
+.bike-selection {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(100px, 12vw, 178px) clamp(24px, 6vw, 96px) clamp(112px, 13vw, 190px);
+    background: #fbfaf6;
+}
+
+.bike-selection__heading {
+    width: min(100%, 880px);
+    margin: 0 auto clamp(54px, 7vw, 92px);
+    text-align: center;
+}
+
+.bike-selection h2 {
+    margin: 0;
+    font-size: clamp(3.7rem, 6.3vw, 7.1rem);
+    line-height: .9;
+    letter-spacing: -.045em;
+}
+
+.bike-selection__heading > p:last-child {
+    max-width: 650px;
+    margin: 26px auto 0;
+    color: rgba(32,35,31,.66);
+    line-height: 1.75;
+}
+
+.bike-card-grid {
+    width: min(100%, 1480px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2vw, 32px);
+}
+
+.bike-card {
+    position: relative;
+    min-width: 0;
+    min-height: 620px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid rgba(32,35,31,.11);
+    overflow: hidden;
+    transition: transform .8s var(--ease), box-shadow .8s var(--ease), border-color .6s var(--ease);
+}
+
+.bike-card:hover,
+.bike-card:focus-within {
+    transform: translateY(-12px);
+    border-color: rgba(69,83,45,.34);
+    box-shadow: 0 32px 64px rgba(37,44,32,.12);
+}
+
+.bike-card--featured {
+    margin-top: clamp(26px, 3.2vw, 54px);
+}
+
+.bike-card__number {
+    position: absolute;
+    z-index: 3;
+    top: 22px;
+    right: 24px;
+    color: rgba(32,35,31,.52);
+    font-size: .63rem;
+    letter-spacing: .16em;
+}
+
+.bike-card__image {
+    position: relative;
+    min-height: 350px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(145deg, #f5f2ea, #e9e6dc);
+}
+
+.bike-card__image img {
+    position: relative;
+    z-index: 2;
+    width: 87%;
+    max-height: 315px;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 20px rgba(26,31,23,.20));
+    transition: transform .9s var(--ease), filter .9s var(--ease);
+}
+
+.bike-card__circle {
+    position: absolute;
+    width: 68%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(69,83,45,.18);
+    transition: transform 1s var(--ease), opacity 1s var(--ease);
+}
+
+.bike-card__circle::before,
+.bike-card__circle::after {
+    content: "";
+    position: absolute;
+    inset: 13%;
+    border: inherit;
+    border-radius: inherit;
+}
+
+.bike-card__circle::after {
+    inset: 27%;
+}
+
+.bike-card__image--photo {
+    background: #1f241d;
+}
+
+.bike-card__image--photo img {
+    width: 100%;
+    height: 350px;
+    max-height: none;
+    object-fit: cover;
+    filter: saturate(.74) contrast(.98) brightness(.85);
+}
+
+.bike-card__content {
+    flex: 1;
+    padding: clamp(26px, 3vw, 42px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.bike-card__tag {
+    margin: 0 0 12px;
+    color: #8f7945;
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.bike-card h3 {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.5rem, 3.5vw, 4.2rem);
+    font-weight: 500;
+    line-height: .9;
+}
+
+.bike-card__content p:not(.bike-card__tag) {
+    margin: 20px 0 0;
+    color: rgba(32,35,31,.66);
+    font-size: .88rem;
+    line-height: 1.65;
+}
+
+.secondary-button {
+    min-height: 48px;
+    width: 100%;
+    padding: 0 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(32,35,31,.34);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+    color: #fff;
+    border-color: var(--forest);
+    background: var(--forest);
+}
+
+/* =========================================================
+   RUTA
+   ========================================================= */
+.bike-route {
+    position: relative;
+    min-height: 760px;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.bike-route__media,
+.bike-route__overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.bike-route__media {
+    z-index: -2;
+}
+
+.bike-route__media img {
+    width: 100%;
+    height: 116%;
+    object-fit: cover;
+    object-position: center 54%;
+    filter: saturate(.72) contrast(1.02) brightness(.72);
+    transform: translateY(-5%);
+    will-change: transform;
+}
+
+.bike-route__overlay {
+    z-index: -1;
+    background:
+        linear-gradient(90deg, rgba(21,26,19,.92), rgba(21,26,19,.66) 50%, rgba(21,26,19,.28)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.34));
+}
+
+.bike-route__content {
+    width: min(100%, 1480px);
+    margin: 0 auto;
+    padding: 120px clamp(24px, 7vw, 112px);
+    color: #f6f2e9;
+}
+
+.bike-route h2 {
+    max-width: 11ch;
+    margin: 0;
+    font-size: clamp(4rem, 7.2vw, 8.3rem);
+    line-height: .84;
+    letter-spacing: -.05em;
+}
+
+.bike-route__content > p:not(.section-eyebrow) {
+    max-width: 600px;
+    margin: 34px 0 0;
+    color: rgba(246,242,233,.76);
+    line-height: 1.75;
+}
+
+.outline-button {
+    min-height: 52px;
+    margin-top: 38px;
+    padding: 0 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    color: #f7f4ed;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.55);
+    font-size: .69rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.outline-button:hover,
+.outline-button:focus-visible {
+    color: var(--ink);
+    background: #f7f4ed;
+    border-color: #f7f4ed;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   MODALES
+   ========================================================= */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .55s var(--ease), visibility .55s;
+}
+
+.modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17,20,16,.66);
+    backdrop-filter: blur(10px);
+}
+
+.modal__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 780px);
+    max-height: calc(100svh - 44px);
+    overflow-y: auto;
+    padding: clamp(34px, 5vw, 66px);
+    color: var(--ink);
+    background: #fbfaf6;
+    box-shadow: 0 38px 90px rgba(0,0,0,.26);
+    transform: translateY(42px) scale(.965);
+    transition: transform .72s var(--ease);
+}
+
+.modal.is-open .modal__panel {
+    transform: translateY(0) scale(1);
+}
+
+.modal__panel--rules {
+    width: min(100%, 680px);
+}
+
+.modal__close {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.modal__close span {
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    top: 20px;
+    height: 1px;
+    background: var(--ink);
+}
+
+.modal__close span:first-child { transform: rotate(45deg); }
+.modal__close span:last-child { transform: rotate(-45deg); }
+
+.modal__intro {
+    max-width: 560px;
+    margin: 20px 0 32px;
+    color: rgba(32,35,31,.66);
+    line-height: 1.65;
+}
+
+.bike-form {
+    display: grid;
+    gap: 18px;
+}
+
+.bike-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.bike-form label {
+    display: grid;
+    gap: 9px;
+}
+
+.bike-form label > span {
+    color: rgba(32,35,31,.62);
+    font-size: .69rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.bike-form input,
+.bike-form select {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 15px;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(32,35,31,.22);
+    border-radius: 0;
+    outline: none;
+    transition: border-color .35s ease, box-shadow .35s ease;
+}
+
+.bike-form input:focus,
+.bike-form select:focus {
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(69,83,45,.08);
+}
+
+.primary-button--full {
+    width: 100%;
+    min-height: 56px;
+    margin-top: 8px;
+}
+
+.bike-form__status {
+    min-height: 20px;
+    margin: 0;
+    color: var(--forest);
+    font-size: .82rem;
+}
+
+.rules-list {
+    list-style: none;
+    margin: 36px 0 0;
+    padding: 0;
+    display: grid;
+}
+
+.rules-list li {
+    padding: 21px 0;
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 18px;
+    align-items: start;
+    color: rgba(32,35,31,.72);
+    border-top: 1px solid rgba(32,35,31,.13);
+    line-height: 1.6;
+}
+
+.rules-list li:last-child {
+    border-bottom: 1px solid rgba(32,35,31,.13);
+}
+
+.rules-list span {
+    color: #9b8248;
+    font-size: .68rem;
+    letter-spacing: .12em;
+}
+
+/* =========================================================
+   ANIMACIONES DE ENTRADA
+   ========================================================= */
+[data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+    transition: opacity 1.05s var(--ease), transform 1.05s var(--ease);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.bike-booking-bar[data-reveal] {
+    opacity: 0;
+    transform: translate3d(-50%, 42px, 0);
+}
+
+.bike-booking-bar[data-reveal].is-visible {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1100px) {
+    .bike-hero {
+        height: auto;
+        min-height: 1080px;
+        padding: calc(var(--header-height) + 58px) 30px 180px;
+    }
+    .bike-hero__content { grid-template-columns: 1fr; min-height: 0; gap: 10px; }
+    .bike-hero__visual { min-height: 440px; }
+    .bike-hero__bike { width: min(86vw, 650px); min-width: 0; }
+    .bike-booking-bar { grid-template-columns: repeat(2, 1fr); }
+    .bike-card-grid { grid-template-columns: 1fr 1fr; }
+    .bike-card:last-child { grid-column: 1 / -1; width: calc(50% - 16px); justify-self: center; }
+}
+
+@media (max-width: 720px) {
+    .bike-hero { min-height: 1160px; padding: calc(var(--header-height) + 48px) 20px 290px; }
+    .bike-hero h1 { font-size: clamp(4.1rem, 20vw, 6.6rem); }
+    .bike-features { grid-template-columns: 1fr; }
+    .bike-booking-bar { bottom: 18px; width: calc(100% - 28px); grid-template-columns: 1fr; }
+    .bike-card-grid { grid-template-columns: 1fr; }
+    .bike-card, .bike-card:last-child { width: 100%; min-height: 560px; }
+    .bike-form__row { grid-template-columns: 1fr; }
+}
