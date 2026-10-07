@@ -7,6 +7,8 @@ import Habitaciones from './pages/Habitaciones/Habitaciones';
 import Nosotros from './pages/Nosotros/Nosotros';
 import Reservas from './pages/Reservas/Reservas';
 import Contacto from './pages/Contacto/Contacto';
+import Bicicletas from './pages/Bicicletas/Bicicletas';
+import Login from './pages/Login/Login';
 import './index.css';
 
 function ScrollToTop() {
@@ -54,9 +56,9 @@ export default function App() {
         <Route path="/habitaciones" element={<Habitaciones />} />
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/servicios" element={<PlaceholderPage title="Servicios Exclusivos" />} />
-        <Route path="/bicicletas" element={<PlaceholderPage title="Rutas & Bicicletas" />} />
+        <Route path="/bicicletas" element={<Bicicletas />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/acceso" element={<PlaceholderPage title="Acceso al Hotel" />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

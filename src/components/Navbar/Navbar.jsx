@@ -54,7 +54,7 @@ export default function Navbar() {
             <li><Link to="/servicios" onClick={closeMenu}><span className="menu-num">05</span> SERVICIOS</Link></li>
             <li><Link to="/bicicletas" onClick={closeMenu}><span className="menu-num">06</span> BICICLETAS</Link></li>
             <li><Link to="/contacto" onClick={closeMenu}><span className="menu-num">07</span> CONTACTO</Link></li>
-            <li><Link to="/acceso" onClick={closeMenu}><span className="menu-num">08</span> ACCESO</Link></li>
+            <li><Link to="/login" onClick={closeMenu}><span className="menu-num">08</span> ACCESO</Link></li>
           </ul>
 
           <div className="menu-footer">
