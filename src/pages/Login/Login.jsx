@@ -1,18 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Login.css";
-
-// Enlaces del Header
-const NAV_LINKS = [
-  { label: "Inicio", href: "/" },
-  { label: "Conócenos", href: "/nosotros" },
-  { label: "Habitaciones", href: "/habitaciones" },
-  { label: "Reservas", href: "/reservas" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Gastronomía", href: "/gastronomia" },
-  { label: "Bicicletas", href: "/bicis" },
-  { label: "Contacto", href: "/contacto" },
-  { label: "Acceso", href: "/login", isCurrent: true },
-];
 
 export default function Login() {
   // Estados del Formulario
@@ -24,34 +11,6 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [authMessage, setAuthMessage] = useState({ text: "", type: "" });
-
-  // Estados del Header
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isDesktopHovered, setIsDesktopHovered] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollY = useRef(0);
-
-  // Scroll del Header
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = Math.max(window.scrollY, 0);
-      const delta = currentScrollY - lastScrollY.current;
-      setIsScrolled(currentScrollY > 24);
-
-      if (currentScrollY <= 90 || isMobileOpen || isDesktopHovered) {
-        setIsHidden(false);
-      } else if (delta > 7) {
-        setIsHidden(true);
-      } else if (delta < -5) {
-        setIsHidden(false);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobileOpen, isDesktopHovered]);
 
   const handleChange = (e) => {
     const { id, type, value, checked } = e.target;
@@ -92,66 +51,6 @@ export default function Login() {
 
   return (
     <div className="auth-body auth-login">
-      {/* HEADER COMPLETO */}
-      <header className={`site-header ${isScrolled ? "is-scrolled" : ""} ${isHidden ? "is-hidden" : ""}`}>
-        <div className="header-shell">
-          <div
-            className={`desktop-menu ${isDesktopHovered ? "is-open" : ""}`}
-            onMouseEnter={() => setIsDesktopHovered(true)}
-            onMouseLeave={() => setIsDesktopHovered(false)}
-          >
-            <button className="menu-lines" type="button" aria-label="Abrir navegación">
-              <span></span>
-              <span></span>
-            </button>
-            <nav className="desktop-navigation">
-              {NAV_LINKS.map((link, idx) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className={link.isCurrent ? "is-current" : ""}
-                  style={{ "--item": idx }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <a href="/" className="header-brand">
-            <img src="/IMG/logos/logo-hca-premium.png" alt="Hotel Confort Ariari" className="header-logo" />
-          </a>
-
-          <a className="header-booking" href="/reservas">
-            <span>Reservar</span>
-            <span aria-hidden="true">↗</span>
-          </a>
-
-          <button className="mobile-menu-button" type="button" onClick={() => setIsMobileOpen(true)}>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-        <nav className={`mobile-navigation ${isMobileOpen ? "is-open" : ""}`}>
-          <div className="mobile-navigation-top">
-            <img src="/IMG/logos/logo-hca-premium.png" alt="Logo" className="mobile-navigation-logo" />
-            <button className="mobile-close" type="button" onClick={() => setIsMobileOpen(false)}>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
-          <div className="mobile-navigation-links">
-            {NAV_LINKS.map((link, idx) => (
-              <a key={link.label} href={link.href} onClick={() => setIsMobileOpen(false)}>
-                <span>{`0${idx + 1}`}</span>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </nav>
-      </header>
-
       {/* CONTENEDOR DEL LOGIN */}
       <main className="auth-main">
         <section className="auth-frame" aria-labelledby="loginTitle">
@@ -179,7 +78,7 @@ export default function Login() {
             </div>
 
             <form className="auth-card" id="loginForm" onSubmit={handleSubmit} noValidate>
-              <img src="/IMG/logos/logo-hca-premium.png" alt="Hotel Confort Ariari" className="auth-logo" />
+              <img src="/images/logo/logo-hca-premium.png" alt="Hotel Confort Ariari" className="auth-logo" />
               <h1 id="loginTitle">Iniciar sesión</h1>
               <p className="auth-subtitle">Ingresa tus credenciales para continuar.</p>
 

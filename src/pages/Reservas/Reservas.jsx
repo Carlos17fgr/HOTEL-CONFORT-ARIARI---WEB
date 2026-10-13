@@ -46,18 +46,6 @@ const formatShortDate = (date) =>
         .replace(/\./g, "")
     : "";
 
-// DATOS DE NAVEGACIÓN
-const NAV_LINKS = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Conócenos", href: "#conocenos" },
-  { label: "Habitaciones", href: "#habitaciones" },
-  { label: "Reservas", href: "#reservas", isCurrent: true },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Bicicletas", href: "#bicicletas" },
-  { label: "Contacto", href: "#contacto" },
-  { label: "Acceso", href: "#acceso" },
-];
-
 // DATOS DE HABITACIONES
 const ROOMS_DATA = [
   {
@@ -142,109 +130,7 @@ const EXTRAS_DATA = [
 ];
 
 // =========================================================================
-// 2. COMPONENTE: HEADER
-// =========================================================================
-const Header = () => {
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isDesktopHovered, setIsDesktopHovered] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = Math.max(window.scrollY, 0);
-      const delta = currentScrollY - lastScrollY.current;
-      setIsScrolled(currentScrollY > 24);
-
-      if (currentScrollY <= 90 || isMobileOpen || isDesktopHovered) {
-        setIsHidden(false);
-      } else if (delta > 7) {
-        setIsHidden(true);
-      } else if (delta < -5) {
-        setIsHidden(false);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobileOpen, isDesktopHovered]);
-
-  useEffect(() => {
-    if (isMobileOpen) document.body.classList.add("menu-open");
-    else document.body.classList.remove("menu-open");
-
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setIsMobileOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.classList.remove("menu-open");
-    };
-  }, [isMobileOpen]);
-
-  return (
-    <header className={`site-header ${isScrolled ? "is-scrolled" : ""} ${isHidden ? "is-hidden" : ""}`} id="siteHeader">
-      <div className="header-shell">
-        <div
-          className={`desktop-menu ${isDesktopHovered ? "is-open" : ""}`}
-          onMouseEnter={() => setIsDesktopHovered(true)}
-          onMouseLeave={() => setIsDesktopHovered(false)}
-        >
-          <button className="menu-lines" type="button" aria-label="Abrir navegación">
-            <span></span>
-            <span></span>
-          </button>
-          <nav className="desktop-navigation">
-            {NAV_LINKS.map((link, idx) => (
-              <a key={link.label} href={link.href} className={link.isCurrent ? "is-current" : ""} style={{ "--item": idx }}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        <a href="/" className="header-brand" aria-label="Hotel Confort Ariari">
-          <img src="/IMG/logos/logo-hca-premium.png" alt="Hotel Confort Ariari" className="header-logo" />
-        </a>
-
-        <a className="header-booking" href="#bookingFlow">
-          <span>Reservar</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-
-        <button className="mobile-menu-button" type="button" aria-label="Abrir menú" onClick={() => setIsMobileOpen(true)}>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-
-      <nav className={`mobile-navigation ${isMobileOpen ? "is-open" : ""}`} aria-label="Navegación móvil" aria-hidden={!isMobileOpen}>
-        <div className="mobile-navigation-top">
-          <img src="/IMG/logos/logo-hca-premium.png" alt="Hotel Confort Ariari" className="mobile-navigation-logo" />
-          <button className="mobile-close" type="button" aria-label="Cerrar menú" onClick={() => setIsMobileOpen(false)}>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-        <div className="mobile-navigation-links">
-          {NAV_LINKS.map((link, idx) => (
-            <a key={link.label} href={link.href} className={link.isCurrent ? "is-current" : ""} onClick={() => setIsMobileOpen(false)}>
-              <span>{`0${idx + 1}`}</span>
-              {link.label}
-            </a>
-          ))}
-        </div>
-        <p className="mobile-navigation-location">Granada, Meta · Colombia</p>
-      </nav>
-    </header>
-  );
-};
-
-// =========================================================================
-// 3. COMPONENTE: HERO Y CALENDARIO
+// 2. COMPONENTE: HERO Y CALENDARIO
 // =========================================================================
 const HeroCalendar = ({ checkIn, checkOut, onSelectDates, onUnlockFlow }) => {
   const today = new Date();
@@ -1117,10 +1003,7 @@ export default function Reservas() {
 
   return (
     <div className={`booking-page ${!isFlowUnlocked ? "booking-intro-active" : ""}`}>
-      {/* 1. Header */}
-      <Header />
-
-      {/* 2. Hero con Calendario */}
+      {/* Hero con Calendario */}
       <HeroCalendar
         checkIn={checkIn}
         checkOut={checkOut}
