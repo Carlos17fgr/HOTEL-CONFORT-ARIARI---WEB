@@ -6,12 +6,10 @@ const TEXTO_MANIFIESTO = "Diseñamos un santuario de descanso en el corazón del
 export default function Manifiesto() {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-  const imageRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const textEl = textRef.current;
-    const imgEl = imageRef.current;
 
     if (!section || !textEl) return;
 
@@ -24,7 +22,6 @@ export default function Manifiesto() {
       chars.forEach((char, idx) => {
         const span = document.createElement('span');
         span.className = 'manifesto-letter';
-        // Si el caracter es espacio, insertamos un espacio de no separación
         span.textContent = char === ' ' ? '\u00A0' : char;
         span.style.setProperty('--letter-start', (idx / maxIndex).toFixed(4));
         textEl.appendChild(span);
@@ -39,16 +36,8 @@ export default function Manifiesto() {
     const clamp = (val, min = 0, max = 1) => Math.min(Math.max(val, min), max);
 
     const renderLoop = () => {
-      // Interpolación lineal (LERP) para suavizar la animación
       interpolatedProgress += (targetProgress - interpolatedProgress) * 0.085;
-
       section.style.setProperty('--manifest-progress', interpolatedProgress.toFixed(4));
-
-      if (imgEl) {
-        const scale = 1.1 - 0.08 * interpolatedProgress;
-        const translateY = (10 - 20 * interpolatedProgress).toFixed(2);
-        imgEl.style.transform = `scale(${scale}) translateY(${translateY}px)`;
-      }
 
       if (Math.abs(targetProgress - interpolatedProgress) > 0.0001) {
         animationFrameId = requestAnimationFrame(renderLoop);
@@ -85,14 +74,6 @@ export default function Manifiesto() {
         <h2 ref={textRef} className="manifiesto-text">
           {TEXTO_MANIFIESTO}
         </h2>
-        <div className="manifiesto-media">
-          <img 
-            ref={imageRef} 
-            src="/IMG/manifiesto.jpg" 
-            alt="Entorno natural Hotel Confort Ariari" 
-            loading="lazy"
-          />
-        </div>
       </div>
     </section>
   );
