@@ -1,0 +1,325 @@
+.mas-hospedaje-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 400vh !important;
+  background-color: #f7f5f0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+.mas-hospedaje-sticky {
+  width: 100% !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  z-index: 10 !important;
+  box-sizing: border-box !important;
+}
+
+.mas-hospedaje-sticky.pin-top {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: auto !important;
+}
+
+.mas-hospedaje-sticky.pin-fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: auto !important;
+}
+
+.mas-hospedaje-sticky.pin-bottom {
+  position: absolute !important;
+  bottom: 0 !important;
+  top: auto !important;
+  left: 0 !important;
+}
+
+.mas-hospedaje-circle {
+  position: absolute !important;
+  width: 360px !important;
+  height: 360px !important;
+  color: rgba(0, 0, 0, 0.05) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.mas-hospedaje-circle.top-right {
+  top: 0 !important;
+  right: 0 !important;
+}
+
+.mas-hospedaje-circle.bottom-left {
+  bottom: 0 !important;
+  left: 0 !important;
+}
+
+/* Texto de Fondo */
+.mas-hospedaje-container {
+  position: absolute !important;
+  z-index: 2 !important;
+  max-width: 1150px !important;
+  width: 92% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  will-change: transform, filter, opacity !important;
+  transform-origin: center center !important;
+  backface-visibility: hidden !important;
+}
+
+.mas-hospedaje-eyebrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.7rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.mas-hospedaje-eyebrow .eyebrow-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.32em !important;
+  font-weight: 600 !important;
+  color: #2b2b2b !important;
+}
+
+.mas-hospedaje-eyebrow .sparkle {
+  font-size: 0.7rem !important;
+  color: #4a4a4a !important;
+}
+
+.mas-hospedaje-titulo {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(3.8rem, 8.6vw, 7.6rem) !important;
+  line-height: 0.98 !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.015em !important;
+  color: #111111 !important;
+  margin: 0 0 2rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-transform: uppercase !important;
+}
+
+.mas-hospedaje-titulo span {
+  display: block !important;
+}
+
+.mas-hospedaje-subtitulo {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(0.9rem, 1.3vw, 1.12rem) !important;
+  line-height: 1.6 !important;
+  color: #4d4d4d !important;
+  max-width: 640px !important;
+  margin: 0 0 2.8rem 0 !important;
+}
+
+.mas-hospedaje-indicador {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.8rem !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.22em !important;
+  color: #888888 !important;
+  font-weight: 500 !important;
+}
+
+.indicador-linea {
+  width: 36px !important;
+  height: 1px !important;
+  background-color: #888888 !important;
+}
+
+/* CONTENEDOR DE TARJETAS EN POSICIONAMIENTO ABSOLUTO DIAGONAL */
+.hospedaje-cards-diagonal-track {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+}
+
+/* TAMAÑO PÓSTER VERTICAL GIGANTE EDITORIAL CENTRADO */
+.hospedaje-card {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: clamp(390px, 35vw, 520px) !important;
+  height: clamp(560px, 78vh, 720px) !important;
+  background-color: #141315 !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  padding: 2.8rem 2.8rem 3.2rem 2.8rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 35px 85px rgba(0, 0, 0, 0.45) !important;
+  overflow: hidden !important;
+  will-change: transform !important;
+  pointer-events: auto !important;
+  backface-visibility: hidden !important;
+  transition: box-shadow 0.6s ease, border-color 0.6s ease !important;
+}
+
+.hospedaje-card.is-focused {
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.65) !important;
+}
+
+.card-media-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    to top,
+    rgba(10, 8, 12, 0.92) 0%,
+    rgba(15, 12, 16, 0.3) 55%,
+    rgba(15, 12, 16, 0.45) 100%
+  ) !important;
+  z-index: 1 !important;
+}
+
+.card-number {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.15em !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-weight: 600 !important;
+  align-self: flex-end !important;
+  z-index: 2 !important;
+}
+
+/* BLOQUE INFERIOR DE TEXTO + BOTÓN CIRCULAR CON FLECHA */
+.card-bottom-content {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  z-index: 2 !important;
+  gap: 1.2rem !important;
+}
+
+.card-text-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.2rem !important;
+  max-width: 78% !important;
+}
+
+.card-category {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.28em !important;
+  color: #c9b380 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(2.4rem, 3.6vw, 3.2rem) !important;
+  line-height: 1.05 !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* 🔑 DESCRIPCIÓN CHIQUITA: TRANSICIÓN DE APARICIÓN LENTA Y SEDOSA (0.9s) */
+.card-description {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 0.82rem !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 !important;
+  max-height: 0px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transform: translateY(14px) !important;
+  transition: max-height 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-top 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* HOVER: Se despliega suavemente fundiéndose con elegancia */
+.hospedaje-card:hover .card-description {
+  max-height: 90px !important;
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+  margin-top: 0.55rem !important;
+}
+
+/* BOTÓN CIRCULAR Y FLECHA: LENTO Y FLUIDO */
+.card-button {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 0.3rem !important;
+}
+
+/* Flecha por defecto: diagonal (-45deg) */
+.card-button .arrow-icon {
+  width: 20px !important;
+  height: 20px !important;
+  transform: rotate(-45deg) !important; 
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.7s ease !important;
+  stroke: #ffffff !important;
+}
+
+/* HOVER: Giro lento y sedoso a recta (0deg) + Resplandor verde */
+.hospedaje-card:hover .card-button,
+.card-button:hover {
+  border-color: #2ecc71 !important;
+  background-color: rgba(46, 204, 113, 0.15) !important;
+  color: #2ecc71 !important;
+  box-shadow: 0 0 30px rgba(46, 204, 113, 0.6), inset 0 0 14px rgba(46, 204, 113, 0.12) !important;
+  transform: scale(1.06) !important;
+}
+
+.hospedaje-card:hover .arrow-icon,
+.card-button:hover .arrow-icon {
+  transform: rotate(0deg) !important; /* Se endereza suavemente */
+  stroke: #2ecc71 !important;
+}
+
+@media (max-width: 768px) {
+  .mas-hospedaje-section {
+    height: 400vh !important;
+  }
+
+  .hospedaje-card {
+    width: 85vw !important;
+    height: min(520px, 72vh) !important;
+    padding: 2.2rem 2rem !important;
+  }
+
+  .card-title {
+    font-size: 2rem !important;
+  }
+
+  .mas-hospedaje-titulo {
+    font-size: 2.8rem !important;
+  }
+}
